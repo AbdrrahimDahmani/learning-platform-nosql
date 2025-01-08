@@ -38,3 +38,11 @@ Pour démarer ce projet :
 # Question: Que se passe-t-il si une variable requise est manquante ?
 
 # Réponse : L'application ne fonctionnera pas correctement ou plantera
+
+# Question: Pourquoi créer un module séparé pour les connexions aux bases de données ?
+
+# Réponse : Pour centraliser la logique de connexion et faciliter la réutilisation du code.
+
+# Question: Comment gérer proprement la fermeture des connexions ?
+
+# Réponse : En utilisant des blocs "try...finally" pour s'assurer que les connexions sont fermées même en cas d'erreur
