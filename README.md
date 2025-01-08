@@ -21,28 +21,28 @@ Pour démarer ce projet :
    npm start
    ```
 
-### Questions :
+# Questions :
 
-# Question: Quelles sont les informations sensibles à ne jamais commiter ?
+### Question: Quelles sont les informations sensibles à ne jamais commiter ?
 
-# Réponse : les mots de passes, les API token, les clé privé du ssh
+### Réponse : les mots de passes, les API token, les clé privé du ssh
 
-# Question: Pourquoi utiliser des variables d'environnement ?
+### Question: Pourquoi utiliser des variables d'environnement ?
 
-# Réponse : Les variables d'environnement permettent de gérer les configurations sensibles et spécifiques à l'environnement sans les inclure directement dans le code source.
+### Réponse : Les variables d'environnement permettent de gérer les configurations sensibles et spécifiques à l'environnement sans les inclure directement dans le code source.
 
-# Question: Pourquoi est-il important de valider les variables d'environnement au démarrage ?
+### Question: Pourquoi est-il important de valider les variables d'environnement au démarrage ?
 
-# Réponse : Pour éviter les erreurs et garantir la sécurité et le bon fonctionnement de l'application
+### Réponse : Pour éviter les erreurs et garantir la sécurité et le bon fonctionnement de l'application
 
-# Question: Que se passe-t-il si une variable requise est manquante ?
+### Question: Que se passe-t-il si une variable requise est manquante ?
 
-# Réponse : L'application ne fonctionnera pas correctement ou plantera
+### Réponse : L'application ne fonctionnera pas correctement ou plantera
 
-# Question: Pourquoi créer un module séparé pour les connexions aux bases de données ?
+### Question: Pourquoi créer un module séparé pour les connexions aux bases de données ?
 
-# Réponse : Pour centraliser la logique de connexion et faciliter la réutilisation du code.
+### Réponse : Pour centraliser la logique de connexion et faciliter la réutilisation du code.
 
-# Question: Comment gérer proprement la fermeture des connexions ?
+### Question: Comment gérer proprement la fermeture des connexions ?
 
-# Réponse : En utilisant des blocs "try...finally" pour s'assurer que les connexions sont fermées même en cas d'erreur
+### Réponse : En utilisant des blocs "try...finally" pour s'assurer que les connexions sont fermées même en cas d'erreur
