@@ -23,26 +23,30 @@ Pour démarer ce projet :
 
 # Questions :
 
-### Question: Quelles sont les informations sensibles à ne jamais commiter ?
+### Question 1: Quelles sont les informations sensibles à ne jamais commiter ?
 
-### Réponse : les mots de passes, les API token, les clé privé du ssh
+- Réponse : les mots de passe, les API tokens, les clés privées du SSH
 
-### Question: Pourquoi utiliser des variables d'environnement ?
+### Question 2: Pourquoi utiliser des variables d'environnement ?
 
-### Réponse : Les variables d'environnement permettent de gérer les configurations sensibles et spécifiques à l'environnement sans les inclure directement dans le code source.
+- Réponse : Les variables d'environnement permettent de gérer les configurations sensibles et spécifiques à l'environnement sans les inclure directement dans le code source.
 
-### Question: Pourquoi est-il important de valider les variables d'environnement au démarrage ?
+### Question 3: Pourquoi est-il important de valider les variables d'environnement au démarrage ?
 
-### Réponse : Pour éviter les erreurs et garantir la sécurité et le bon fonctionnement de l'application
+- Réponse : Pour éviter les erreurs et garantir la sécurité et le bon fonctionnement de l'application.
 
-### Question: Que se passe-t-il si une variable requise est manquante ?
+### Question 4: Que se passe-t-il si une variable requise est manquante ?
 
-### Réponse : L'application ne fonctionnera pas correctement ou plantera
+- Réponse : L'application ne fonctionnera pas correctement ou plantera.
 
-### Question: Pourquoi créer un module séparé pour les connexions aux bases de données ?
+### Question 5: Pourquoi créer un module séparé pour les connexions aux bases de données ?
 
-### Réponse : Pour centraliser la logique de connexion et faciliter la réutilisation du code.
+- Réponse : Pour centraliser la logique de connexion et faciliter la réutilisation du code.
 
-### Question: Comment gérer proprement la fermeture des connexions ?
+### Question 6: Comment gérer proprement la fermeture des connexions ?
 
-### Réponse : En utilisant des blocs "try...finally" pour s'assurer que les connexions sont fermées même en cas d'erreur
+- Réponse : En utilisant des blocs "try...finally" pour s'assurer que les connexions sont fermées même en cas d'erreur.
+
+### Question 7: Pourquoi créer des services séparés ?
+
+- Réponse : Pour organiser le code de manière modulaire et permettre la réutilisation des fonctionnalités dans différentes parties de l'application.
