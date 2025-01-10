@@ -1,41 +1,51 @@
-// Question : Comment gérer efficacement le cache avec Redis ?
-// Réponse :
-// Question: Quelles sont les bonnes pratiques pour les clés Redis ?
-// Réponse :
-
 const { connectRedis } = require("../config/db");
 
-// connexion a redis
-let client;
+let clientPromise; // Hold the promise for Redis client initialization
+
 (async () => {
-  client = await connectRedis();
+  clientPromise = connectRedis(); // Assign the promise
 })();
-// Fonctions utilitaires pour Redis
+
+// pour assurer que le client est bien initialisé
+async function getClient() {
+  if (!clientPromise) {
+    throw new Error("Redis client not initialized");
+  }
+  return clientPromise;
+}
+
+// Utility functions
 async function cacheData(key, data) {
-  return new Promise(async (resolve, reject) => {
-    let res = await getData(key);
-    if (res) {
-      console.log("HIT");
-      resolve(JSON.parse(res));
-    } else {
+  const client = await getClient();
+  const cachedData = await getData(key);
+
+  if (cachedData) {
+    console.log("HIT");
+    return cachedData;
+  } else {
+    try {
       console.log("MISS");
       await client.set(key, JSON.stringify(data));
       await client.expire(key, 20);
-      resolve(JSON.parse(data));
+      return data;
+    } catch (err) {
+      console.error("error", err);
     }
-  });
+  }
 }
 
 async function getData(key) {
-  return new Promise((resolve, reject) => {
-    client.get(key, (err, reply) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(JSON.parse(reply));
-      }
-    });
-  });
+  const client = await getClient();
+  try {
+    const data = await client.get(key);
+    if (data) {
+      return JSON.parse(data);
+    }
+    return null;
+  } catch (err) {
+    console.error("can't get data", err);
+    return null;
+  }
 }
 
 module.exports = {

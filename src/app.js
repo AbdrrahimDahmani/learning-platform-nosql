@@ -7,7 +7,7 @@ const { connectMongo } = require("./config/db");
 // const courseRoutes = require("./routes/courseRoutes");
 // const studentRoutes = require("./routes/studentRoutes");
 const { findOneById } = require("./services/mongoService");
-const { cacheData } = require("./services/redisService");
+const { cacheData, getData } = require("./services/redisService");
 
 const app = express();
 
@@ -16,17 +16,18 @@ async function startServer() {
     // TODO: Initialiser les connexions aux bases de données
     // TODO: Configurer les middlewares Express
     // TODO: Monter les routes
-    // TODO: Démarrer le serveur
+
     await connectMongo();
 
     //test
-    findOneById("cours", "101").then(
-      async (res) => {
-        const cachedData = await cacheData("101", res);
-        console.log(cachedData);
-      },
-      (err) => console.error(err)
-    );
+    const course = await findOneById("cours", "101");
+
+    const cachedCourse = await cacheData("101", course);
+
+    // Démarrer le serveur
+    app.listen(3000, () => {
+      console.log("Server is running on http://localhost:3000");
+    });
   } catch (error) {
     console.error("Failed to start server:", error);
     process.exit(1);
