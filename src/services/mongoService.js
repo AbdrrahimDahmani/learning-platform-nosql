@@ -12,6 +12,7 @@ async function findOneById(collectionName, id) {
     return first;
   } catch (error) {
     console.error("Error : ", error);
+    throw error;
   }
 }
 // creation d'un cours
@@ -19,9 +20,10 @@ async function create(collectionName, course) {
   try {
     const db = getDbObject();
     let collection = db.collection(collectionName);
-    await collection.insertOne(course);
+    return await collection.insertOne(course);
   } catch (error) {
     console.error("Error : ", error);
+    throw error;
   }
 }
 
@@ -31,13 +33,17 @@ async function findCourseStats(collectionName, courseName) {
     const db = getDbObject();
     let collection = db.collection(collectionName);
     let course = await collection.findOne({ name: courseName });
-    courseStats = {
+    if (!course) {
+      throw new Error("Course not found");
+    }
+    const courseStats = {
       Duration: course.duration,
       StudentsEnroled: course.studentsEnroled,
     };
-    courseStats;
+    return courseStats;
   } catch (error) {
     console.error("Error : ", error);
+    throw error;
   }
 }
 

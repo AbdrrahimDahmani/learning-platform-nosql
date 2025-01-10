@@ -9,8 +9,8 @@ const {
   closeRedisConnection,
 } = require("./config/db");
 const courseRoutes = require("./routes/courseRoutes");
-// const studentRoutes = require("./routes/studentRoutes");
-
+const swaggerUI = require("swagger-ui-express");
+const swaggerSpecs = require("./config/swaggerConfig");
 const app = express();
 
 async function startServer() {
@@ -19,12 +19,17 @@ async function startServer() {
     await connectMongo();
     // Configurer les middlewares Express
     app.use(express.json());
+    // Monter Swagger documentation
+    app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpecs));
 
     // Monter les routes
     app.use("/courses", courseRoutes);
     // Démarrer le serveur
     app.listen(config.port, () => {
-      console.log("Server is running on http://localhost:3000");
+      console.log(`Server is running on http://localhost:${config.port}`);
+      console.log(
+        `Swagger Docs available at http://localhost:${config.port}/api-docs`
+      );
     });
   } catch (error) {
     console.error("Failed to start server:", error);
