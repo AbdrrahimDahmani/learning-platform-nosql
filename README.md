@@ -4,7 +4,10 @@ Pour ce projet, vous allez créer une petite API qui va servir de backend à une
 
 # video
 
-![](video/demonstration.mp4)
+```markdown
+<video src="video/demonstration.mp4" controls></video>
+```
+
 Pour démarer ce projet :
 
 1. Installation :
