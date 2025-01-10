@@ -3,8 +3,6 @@
 // Question : Pourquoi séparer la logique métier des routes ?
 // Réponse :
 
-const { ObjectId } = require("mongodb");
-const db = require("../config/db");
 const mongoService = require("../services/mongoService");
 const redisService = require("../services/redisService");
 

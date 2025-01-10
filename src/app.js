@@ -12,7 +12,7 @@ const courseRoutes = require("./routes/courseRoutes");
 // const studentRoutes = require("./routes/studentRoutes");
 
 const app = express();
-const router = express.Router();
+
 async function startServer() {
   try {
     // Initialiser les connexions aux bases de données
@@ -23,7 +23,7 @@ async function startServer() {
     // Monter les routes
     app.use("/courses", courseRoutes);
     // Démarrer le serveur
-    app.listen(3000, () => {
+    app.listen(config.port, () => {
       console.log("Server is running on http://localhost:3000");
     });
   } catch (error) {
