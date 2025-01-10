@@ -36,10 +36,12 @@ async function connectRedis() {
     });
 
     await redisClient.connect();
+    return redisClient;
   } catch (error) {
     console.error("Failed to connect to Redis:", error);
   }
 }
+// Pour assurer que l'objet db est bien initialisé
 function getDbObject() {
   if (!db) {
     throw new Error("Database not initialized yet.");

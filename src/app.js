@@ -7,6 +7,7 @@ const { connectMongo } = require("./config/db");
 // const courseRoutes = require("./routes/courseRoutes");
 // const studentRoutes = require("./routes/studentRoutes");
 const { findOneById } = require("./services/mongoService");
+const { cacheData } = require("./services/redisService");
 
 const app = express();
 
@@ -17,9 +18,12 @@ async function startServer() {
     // TODO: Monter les routes
     // TODO: Démarrer le serveur
     await connectMongo();
+
+    //test
     findOneById("cours", "101").then(
-      (res) => {
-        console.log(res);
+      async (res) => {
+        const cachedData = await cacheData("101", res);
+        console.log(cachedData);
       },
       (err) => console.error(err)
     );

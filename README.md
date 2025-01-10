@@ -50,3 +50,11 @@ Pour démarer ce projet :
 ### Question 7: Pourquoi créer des services séparés ?
 
 - Réponse : Pour organiser le code de manière modulaire et permettre la réutilisation des fonctionnalités dans différentes parties de l'application.
+
+### Question : Comment gérer efficacement le cache avec Redis ?
+
+- Réponse : en stockant les données fréquemment consultées pour réduire la charge sur la base de données principale. Configurer les dates d'expiration pour les clés afin de libérer de l'espace mémoire.
+
+### Question: Quelles sont les bonnes pratiques pour les clés Redis ?
+
+- Réponse : on utilise des noms de clés descriptifs et structurés pour faciliter la gestion et la recherche. En évitant les clés trop longues et en utilisant des préfixes pour regrouper les clés par fonctionnalité ou module.

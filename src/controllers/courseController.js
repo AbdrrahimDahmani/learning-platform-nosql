@@ -12,14 +12,8 @@ async function createCourse(req, res) {
   // TODO: Implémenter la création d'un cours
   // Utiliser les services pour la logique réutilisable
 }
-async function getCourse(req, res) {
-  // TODO: Implémenter la création d'un cours
-  // Utiliser les services pour la logique réutilisable
-}
-async function getCourseStats(req, res) {
-  // TODO: Implémenter la création d'un cours
-  // Utiliser les services pour la logique réutilisable
-}
+async function getCourse(req, res) {}
+async function getCourseStats(req, res) {}
 
 // Export des contrôleurs
 module.exports = {
