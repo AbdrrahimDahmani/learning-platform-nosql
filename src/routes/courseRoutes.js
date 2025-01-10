@@ -1,8 +1,3 @@
-// Question: Pourquoi séparer les routes dans différents fichiers ?
-// Réponse :
-// Question : Comment organiser les routes de manière cohérente ?
-// Réponse:
-
 const express = require("express");
 const router = express.Router();
 const courseController = require("../controllers/courseController");
@@ -29,7 +24,7 @@ const courseController = require("../controllers/courseController");
  *             properties:
  *               id:
  *                 type: string
- *                 description: Name of the course
+ *                 description: ID of the course
  *               name:
  *                 type: string
  *                 description: Name of the course
@@ -38,16 +33,16 @@ const courseController = require("../controllers/courseController");
  *                 description: Description of the course
  *               instructor:
  *                 type: string
- *                 description: Name
+ *                 description: Instructor's name
  *               duration:
  *                 type: integer
- *                 description: duration
+ *                 description: Duration in hours
  *               category:
  *                 type: string
- *                 description: category
+ *                 description: Course category
  *               studentsEnrolled:
  *                 type: integer
- *                 description: number of students
+ *                 description: Number of students enrolled
  *             required:
  *               - name
  *               - description
@@ -59,6 +54,38 @@ const courseController = require("../controllers/courseController");
  *         description: Invalid input
  */
 router.post("/", courseController.createCourse);
+
+/**
+ * @swagger
+ * /courses/stats:
+ *   get:
+ *     summary: Get aggregated course statistics
+ *     tags: [Courses]
+ *     responses:
+ *       200:
+ *         description: Aggregated statistics of all courses
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 totalCourses:
+ *                   type: integer
+ *                   description: Total number of courses
+ *                   example: 5
+ *                 totalDuration:
+ *                   type: integer
+ *                   description: Total duration of all courses in hours
+ *                   example: 50
+ *                 totalStudentsEnrolled:
+ *                   type: integer
+ *                   description: Total number of students enrolled across all courses
+ *                   example: 600
+ *       500:
+ *         description: Server error
+ */
+router.get("/stats", courseController.getCourseStats);
+
 /**
  * @swagger
  * /courses/{id}:
@@ -96,25 +123,5 @@ router.post("/", courseController.createCourse);
  *         description: Course not found
  */
 router.get("/:id", courseController.getCourse);
-/**
- * @swagger
- * /courses/stats:
- *   get:
- *     summary: Get course statistics
- *     tags: [Courses]
- *     responses:
- *       200:
- *         description: Course statistics
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 Duration of the course:
- *                   type: integer
- *                 Enroled Students:
- *                   type: integer
- */
-router.get("/stats", courseController.getCourseStats);
 
 module.exports = router;

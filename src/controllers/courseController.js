@@ -43,7 +43,7 @@ async function getCourse(req, res) {
 // Contrôleurs pour la récupération des statistiques des cours
 async function getCourseStats(req, res) {
   try {
-    console.log(req.params.courseName);
+    console.log("hi");
     const stats = await mongoService.findCourseStats("cours");
     res.status(200).json(stats);
   } catch (error) {
