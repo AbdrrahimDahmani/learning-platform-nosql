@@ -66,3 +66,11 @@ Pour démarer ce projet :
 #### Question: Quelle est la meilleure façon de gérer le démarrage de l'application ?
 
 - Réponse : En utilisant un outil comme `nodemon` pour redémarrer automatiquement l'application en cas de changement de code pendant le développement.
+
+#### Question: Quelle est la différence entre un contrôleur et une route ?
+
+- Réponse : Un contrôleur gère la logique métier et les opérations, tandis qu'une route définit les points d'accès de l'API et les associe aux contrôleurs correspondants.
+
+#### Question : Pourquoi séparer la logique métier des routes ?
+
+- Réponse : Pour maintenir un code propre et modulaire, facilitant la maintenance et les tests.

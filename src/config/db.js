@@ -48,9 +48,19 @@ function getDbObject() {
   }
   return db;
 }
+// Fermeture des connexions
+async function closeMongoConnection() {
+  await mongoClient.close();
+}
+// Fermeture des connexions
+async function closeRedisConnection() {
+  await redisClient.quit();
+}
 // Export des fonctions et clients
 module.exports = {
   connectMongo,
   connectRedis,
   getDbObject,
+  closeMongoConnection,
+  closeRedisConnection,
 };
