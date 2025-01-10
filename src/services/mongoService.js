@@ -14,6 +14,7 @@ async function findOneById(collectionName, id) {
     console.error("Error : ", error);
   }
 }
+// creation d'un cours
 async function create(collectionName, course) {
   try {
     const db = getDbObject();
@@ -23,6 +24,8 @@ async function create(collectionName, course) {
     console.error("Error : ", error);
   }
 }
+
+// Fonction pour trouver les statistiques d'un cours
 async function findCourseStats(collectionName, courseName) {
   try {
     const db = getDbObject();

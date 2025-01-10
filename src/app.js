@@ -8,22 +8,19 @@ const { connectMongo } = require("./config/db");
 // const studentRoutes = require("./routes/studentRoutes");
 const { findOneById } = require("./services/mongoService");
 const { cacheData, getData } = require("./services/redisService");
+const router = require("./routes/courseRoutes");
 
 const app = express();
-
+const route = express.Router();
 async function startServer() {
   try {
-    // TODO: Initialiser les connexions aux bases de données
-    // TODO: Configurer les middlewares Express
-    // TODO: Monter les routes
-
+    // Initialiser les connexions aux bases de données
     await connectMongo();
+    // Configurer les middlewares Express
+    app.use(express.json());
 
-    //test
-    const course = await findOneById("cours", "101");
-
-    const cachedCourse = await cacheData("101", course);
-
+    // Monter les routes
+    app.use("/courses", router);
     // Démarrer le serveur
     app.listen(3000, () => {
       console.log("Server is running on http://localhost:3000");
@@ -36,7 +33,9 @@ async function startServer() {
 
 // Gestion propre de l'arrêt
 process.on("SIGTERM", async () => {
-  // TODO: Implémenter la fermeture propre des connexions
+  // la fermeture propre des connexions
+  console.log("Closing the server...");
+  process.exit(0);
 });
 
 startServer();

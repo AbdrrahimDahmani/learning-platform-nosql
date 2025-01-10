@@ -1,9 +1,9 @@
 const { connectRedis } = require("../config/db");
 
-let clientPromise; // Hold the promise for Redis client initialization
+let clientPromise;
 
 (async () => {
-  clientPromise = connectRedis(); // Assign the promise
+  clientPromise = connectRedis();
 })();
 
 // pour assurer que le client est bien initialisé
@@ -33,7 +33,7 @@ async function cacheData(key, data) {
     }
   }
 }
-
+// Getting cached data
 async function getData(key) {
   const client = await getClient();
   try {
