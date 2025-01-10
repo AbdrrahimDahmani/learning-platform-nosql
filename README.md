@@ -2,6 +2,9 @@
 
 Pour ce projet, vous allez créer une petite API qui va servir de backend à une plateforme d'apprentissage en ligne. J'ai préparé la structure du projet avec une organisation professionnelle du code, comme vous pouvez le constater dans ce dépôt Github.
 
+# video
+
+![](video/demonstration.mp4)
 Pour démarer ce projet :
 
 1. Installation :
@@ -17,9 +20,12 @@ Pour démarer ce projet :
    ```
 
 2. Démarage :
+
    ```bash
    npm start
    ```
+
+3. Accéder aux swagger en navigant à : `http://localhost:3000/api-docs`
 
 # Questions :
 
