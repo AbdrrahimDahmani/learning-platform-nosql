@@ -4,9 +4,7 @@ Pour ce projet, vous allez créer une petite API qui va servir de backend à une
 
 # video
 
-```markdown
-<video src="video/demonstration.mp4" controls></video>
-```
+https://github.com/user-attachments/assets/65ea40e9-696c-4f2d-a944-b31e39e0bebf
 
 Pour démarer ce projet :
 
